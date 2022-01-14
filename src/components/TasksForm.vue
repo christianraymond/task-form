@@ -1,0 +1,164 @@
+<template>
+  <div class="flex-container">
+    <div class="row top-header">
+      <h2 class="block">Edit task</h2>
+      <div class="icons">
+        <i class="pi pi-check block-circle"></i>
+        <i class="pi pi-ellipsis-h block"></i>
+      </div>
+    </div>
+    <p>J0001234 - August Social Media Retainer</p>
+    <div class="menu-items">
+      <div class="menu-container menu-container overflow-hidden">
+        <div class="flex menu-list">
+          <i
+            class="pi pi-check text-blue-500"
+            style="padding: inherit; font-size: 13px"
+          >
+            Task</i
+          >
+          <i
+            class="pi pi-folder-open px-3 py-0"
+            style="padding: inherit; font-size: 13px"
+          >
+            Brief</i
+          >
+          <i
+            class="pi pi-folder px-3 py-0"
+            style="padding: inherit; font-size: 13px"
+          >
+            Notes</i
+          >
+          <i
+            class="pi pi-clock px-3 py-0"
+            style="padding: inherit; font-size: 13px"
+          >
+            Time</i
+          >
+        </div>
+      </div>
+    </div>
+    <form @submit.prevent="handleSubmit">
+      <label>Task label</label>
+      <div class="form-inline">
+        <input type="text" v-model="taskLabel" />
+        <label class="toggle">
+          <input class="toggle-checkbox" type="checkbox" checked />
+          <div class="toggle-switch"></div>
+          <span class="toggle-label">Billable</span>
+        </label>
+      </div>
+
+      <div class="form-inline">
+        <label
+          >Task Type <br /><br />
+          <select v-model="taskType">
+            <option value="Design">Design</option>
+            <option value="developer">Developer</option>
+            <option value="scrum-master">Scrum Master</option>
+          </select>
+        </label>
+        <label
+          >Estimate Time <br /><br />
+          <input type="text" v-model="startDate" placeholder="16:00" />
+        </label>
+      </div>
+
+      <div class="form-inline">
+        <label
+          >Start Date <br /><br />
+          <input type="text" v-model="startDate" placeholder="14 July 2021" />
+        </label>
+        <label
+          >Due Date <br /><br />
+          <input type="text" v-model="dueDate" placeholder="Select date" />
+        </label>
+      </div>
+
+      <div class="flex-content">
+        <div><label>Description </label></div>
+        <div id="extend-date">
+          <input type="checkbox" v-model="jobDue" />
+          <label>Extend Job Due Date</label>
+        </div>
+      </div>
+      <textarea
+        type="text"
+        v-model="dueDate"
+        id="description"
+        placeholder="This is a short unfortunatted, editable description loaded from the task listed under agency tasks. This is a short unformatted, editable default description loaded from the task listed under agency tasks"
+      /><br /><br />
+      <div class="form-inline">
+        <label
+          >Reviewed by <br /><br />
+          <select v-model="taskType">
+            <option>No review</option>
+            <option value="developer">Shaun</option>
+            <option value="scrum-master">De wet</option>
+          </select>
+        </label>
+        <label
+          >Allocate to CE <br /><br />
+          <select v-model="taskType">
+            <option>Select Cost Estimate</option>
+            <option value="estimate-one">Estiamte 1</option>
+            <option value="estimate-two">Estiamte 2</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="task-bottom">
+        <p>To assign a task to someone, first allocate it to a Cost Estimate</p>
+      </div>
+
+      <label>Task Status</label>
+      <input type="text" v-model="tempTask" @keyup.alt="addTask" />
+      <div v-for="task in taskStatus" :key="task" class="pill">
+        <span @click="deleteTask(task)"> {{ task }} </span>
+      </div>
+
+      <div class="btnWrapper">
+        <div class="submit-btn user-btn">
+          <button>Save task</button>
+        </div>
+        <div class="cancel-btn user-btn">
+          <button>Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      taskLabel: "Stationary Design",
+      estimateTime: "",
+      startDate: "",
+      taskType: "Design",
+      jobDue: false,
+      tempSkill: "",
+      taskStatus: [],
+    };
+  },
+  methods: {
+    addTask(e) {
+      if (e.key === "," && this.tempTask) {
+        if (!this.taskStatus.includes(this.tempTask)) {
+          this.taskStatus.push(this.tempTask);
+        }
+        this.tempTask = "";
+      }
+    },
+    deleteSkill(task) {
+      this.taskStatus = this.taskStatus.filter((item) => {
+        return task != item;
+      });
+    },
+    handleSubmit() {
+      console.log("Form submitted!");
+    },
+  },
+};
+</script>
