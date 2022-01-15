@@ -87,7 +87,7 @@
       </div>
       <textarea
         type="text"
-        v-model="dueDate"
+        v-model="description"
         id="description"
         placeholder="This is a short unfortunatted, editable description loaded from the task listed under agency tasks. This is a short unformatted, editable default description loaded from the task listed under agency tasks"
       /><br /><br />
@@ -116,11 +116,6 @@
 
       <!-- <label>Task Status (eg: html,)</label>
       <input type="text" v-model="tempTask" @keyup="addTask" /> -->
-
-      <div class="p-field p-col-12 p-md-4">
-        <label for="icon">Icon</label>
-        <p-calendar id="icon" v-model="date3" :show-icon="true"></p-calendar>
-      </div>
 
       <div class="btnWrapper">
         <div class="submit-btn user-btn">
