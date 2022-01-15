@@ -1,6 +1,11 @@
 # tasks-form
 
 ## Project setup
+### First clone the repo into your machine
+```
+git clone https://github.com/christianraymond/task-form.git
+```
+### Find the project then do
 ```
 yarn install
 ```
