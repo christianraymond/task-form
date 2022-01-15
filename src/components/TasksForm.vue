@@ -7,7 +7,10 @@
         <i class="pi pi-ellipsis-h block"></i>
       </div>
     </div>
-    <p>J0001234 - August Social Media Retainer</p>
+    <p class="some-header">J0001234 - August Social Media Retainer</p>
+    <div v-for="task in taskStatus" :key="task" class="pill">
+      <span id="tasks" @click="deleteTask(task)">{{ task }}</span>
+    </div>
     <div class="menu-items">
       <div class="menu-container menu-container overflow-hidden">
         <div class="flex menu-list">
@@ -38,7 +41,7 @@
         </div>
       </div>
     </div>
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="handleSubmit" class="form-container">
       <label>Task label</label>
       <div class="form-inline">
         <input type="text" v-model="taskLabel" />
@@ -68,6 +71,7 @@
         <label
           >Start Date <br /><br />
           <input type="text" v-model="startDate" placeholder="14 July 2021" />
+          <p-calendar id="icon" v-model="date3" :show-icon="true"></p-calendar>
         </label>
         <label
           >Due Date <br /><br />
@@ -91,7 +95,7 @@
       <div class="form-inline">
         <label
           >Reviewed by <br /><br />
-          <select v-model="taskType">
+          <select v-model="reviewedBy">
             <option>No review</option>
             <option value="developer">Shaun</option>
             <option value="scrum-master">De wet</option>
@@ -99,7 +103,7 @@
         </label>
         <label
           >Allocate to CE <br /><br />
-          <select v-model="taskType">
+          <select v-model="allocateCost">
             <option>Select Cost Estimate</option>
             <option value="estimate-one">Estiamte 1</option>
             <option value="estimate-two">Estiamte 2</option>
@@ -111,10 +115,12 @@
         <p>To assign a task to someone, first allocate it to a Cost Estimate</p>
       </div>
 
-      <label>Task Status</label>
-      <input type="text" v-model="tempTask" @keyup.alt="addTask" />
-      <div v-for="task in taskStatus" :key="task" class="pill">
-        <span @click="deleteTask(task)"> {{ task }} </span>
+      <!-- <label>Task Status (eg: html,)</label>
+      <input type="text" v-model="tempTask" @keyup="addTask" /> -->
+
+      <div class="p-field p-col-12 p-md-4">
+        <label for="icon">Icon</label>
+        <p-calendar id="icon" v-model="date3" :show-icon="true"></p-calendar>
       </div>
 
       <div class="btnWrapper">
@@ -137,9 +143,11 @@ export default {
       estimateTime: "",
       startDate: "",
       taskType: "Design",
+      reviewedBy: "No review",
+      allocateCost: "Select Cost Estimate",
       jobDue: false,
       tempSkill: "",
-      taskStatus: [],
+      taskStatus: ["With Client", "Urgent", "On Hold", "Pending", "In Review"],
     };
   },
   methods: {
@@ -151,7 +159,7 @@ export default {
         this.tempTask = "";
       }
     },
-    deleteSkill(task) {
+    deleteTask(task) {
       this.taskStatus = this.taskStatus.filter((item) => {
         return task != item;
       });
