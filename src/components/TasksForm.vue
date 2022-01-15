@@ -63,7 +63,7 @@
         </label>
         <label
           >Estimate Time <br /><br />
-          <input type="date" v-model="estimateDate" placeholder="16:00" />
+          <input type="time" v-model="estimateDate" placeholder="16:00" />
         </label>
       </div>
 
@@ -71,7 +71,6 @@
         <label
           >Start Date <br /><br />
           <input type="date" v-model="startDate" placeholder="14 July 2021" />
-          <p-calendar id="icon" v-model="date3" :show-icon="true"></p-calendar>
         </label>
         <label
           >Due Date <br /><br />
