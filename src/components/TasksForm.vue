@@ -117,7 +117,7 @@
       <!-- <label>Task Status (eg: html,)</label>
       <input type="text" v-model="tempTask" @keyup="addTask" /> -->
 
-      <div class="btnWrapper">
+      <div class="flex">
         <div class="submit-btn user-btn">
           <button>Save task</button>
         </div>

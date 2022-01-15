@@ -1,18 +1,9 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  font-weight: normal;
-  color: #495057;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
 .flex-container {
-  width: 820px;
+  max-width: 820px;
   margin: 30px auto;
   background: white;
   text-align: left;
-  padding: 5em;
+  padding: 2em;
   border-radius: 10px;
 }
 .flex-content {
@@ -89,7 +80,6 @@ input,
 select {
   display: block;
   padding: 10px 6px;
-  width: 100%;
   box-sizing: border-box;
   border: 1px solid #b9c5d0;
   opacity: 1;
@@ -138,7 +128,7 @@ input[type="text"] {
   background: #01BAFC;
   color: #fff
 }
-button {
+  button {
   background: #0036cc;
   border: 0;
   padding: 8px 12px;
@@ -146,13 +136,23 @@ button {
   color: white;
   border-radius: 4px !important;
   cursor: pointer;
-
   display: flex;
   justify-content: center;
-  /* width: 2.5rem;
-  height: 2.5rem; */
   margin-right: 27.34rem;
 }
+
+@media only screen and (max-width: 600px) {
+  button {
+    margin-right: 10em;
+  }
+  .pill {
+    margin: 0 1px 0 0;
+  }
+  input[type="checkbox"] {
+    margin: 0 1px 0 0;
+   }
+  }
+
 button {
   text-align: center;
 }
@@ -167,11 +167,6 @@ textarea {
   background-color: #fff;
   border: 1px solid #ddd;
   outline: none;
-}
-@media (max-width: 800px) {
-  .form-inline input {
-    margin: 10px 0;
-  }
 }
 #extend-date {
   padding: 0 36%;
@@ -191,11 +186,6 @@ textarea {
   font-size: 13px;
   font-weight: 600;
   font-family: system-ui;
-}
-
-.btnWrapper {
-  display: flex;
-  display: inline-flex;
 }
 
 .user-btn {
@@ -293,5 +283,7 @@ opacity: 1;
   letter-spacing: 0px;
   color: #687A8D;
   opacity: 1;
-  
+}
+.pi-ellipsis-h {
+  cursor: pointer;
 }
