@@ -278,8 +278,10 @@ opacity: 1;
 }
 .some-header {
   position: relative;
-  bottom: 2.75em;
-  font: normal normal normal 12px/14px Rubik;
+  bottom: 3.75em;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 11px;
+  line-height: 24px;
   letter-spacing: 0px;
   color: #687A8D;
   opacity: 1;
